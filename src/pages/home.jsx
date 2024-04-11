@@ -18,7 +18,7 @@ const ProductList = () => {
     const fetchBooks = async () => {
       setLoading(true);
       try {
-        const response = await axios.get('https://openlibrary.org/api/books');
+        const response = await axios.get('https://gutendex.com/books');
         setBooks(response.data.results.slice(0, 6)); // Slice the array to get the first 10 books
       } catch (error) {
         console.error('Error fetching books:', error);
