@@ -19,9 +19,10 @@ const Header = () => {
     <Navbar.Toggle aria-controls="basic-navbar-nav" />
     <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
       <Nav>
-        <Nav.Link href="/home">Home</Nav.Link>
-        <Nav.Link href="/Jewellery">Jewellery</Nav.Link>
-        <Nav.Link href="/product">Product</Nav.Link>
+        <Nav.Link href="/home">HOME</Nav.Link>
+        <Nav.Link href="/aboutus">ABOUT US</Nav.Link>
+        <Nav.Link href="/search">SEARCH</Nav.Link>
+        <Nav.Link href="/search">CONTACTUS</Nav.Link>
       </Nav>
     </Navbar.Collapse>
   </Container>

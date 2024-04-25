@@ -7,7 +7,7 @@ import { Routes, Route } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
-import ProductList from "./pages/home";
+import HomePage from "./pages/home";
 import ItemDetails from "./pages/details";
 
 import { ProductProvider } from "./ProductContext";
@@ -22,10 +22,12 @@ function App() {
       <BrowserRouter>
         <ProductProvider>
           <Routes>
-            <Route path="/" element={<Login />} />
-            <Route path="/home" element={<ProductList />} />
+            <Route path="/" element={<HomePage />} />
+            <Route path="/home" element={<HomePage />} />
+            <Route path="/aboutus" element={<HomePage />} />
+            <Route path="/search" element={<Category/>} />
             <Route path="/details" element={<ItemDetails />} />
-            <Route path="/Jwellery" element={<Category/>} />
+            <Route path="/contactus" element={<Category/>} />
           </Routes>
         </ProductProvider>
       </BrowserRouter>

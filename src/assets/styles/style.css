@@ -27,33 +27,48 @@ ol, ul {
     line-height: 1.2;
     font-family: 'Playfair Display', serif;
 }
+h1{
+    font-size: 72px;
+}
+h2{
+    font-size: 55px;
+    color: #121212;
+}
+p{
+    font-size: 18px;
+}
 body{
     font-family: 'Roboto', sans-serif;
 }
+:root{
+    --primary-bg: #FAF9F5;
+    --primary-button:#F13B3A;
+
+}
 section{
-    margin-top: 50px;
+    margin: 5% 8% 5% 8%;
 }
 header {
     background-color: #333;
     color: #fff;
     padding: 1rem;
-  }
+}
   
-  nav ul {
+nav ul {
     list-style: none;
     margin: 0;
     padding: 0;
-  }
+}
   
-  nav ul li {
+nav ul li {
     display: inline;
     margin-right: 1rem;
-  }
+}
   
-  nav ul li a {
+nav ul li a {
     color: #fff;
     text-decoration: none;
-  }
+}
 
 .bg-image {
     position: relative;
@@ -72,15 +87,9 @@ header {
     background-repeat: no-repeat;
     min-height: 100vh;
 }
-.banner-content h1{
-    font-size: 60px;
-    font-weight: 500;
+.banner-content{
+    padding: 0% 45% 0% 12%
 }
-.banner-content p{
-    font-size: 20px;
-    font-weight: 400;
-}
-
 
 .bg-footer {
     position: relative;
@@ -88,23 +97,73 @@ header {
     background-size: cover !important;
     background-position: center;
     background-repeat: no-repeat;
+    min-height: 70vh;
+    padding: 7% 2%;
 }
-.custom-button {
-    background-color: black;
+.shop-button {
+    background-color: var(--primary-button);
     color: white;
-    border: none;
-    padding: 10px 20px;
+    border-style: solid;
+    border-width: 0px 0px 0px 0px;
+    border-radius: 30px 30px 30px 30px;
+    padding: 11px 20px;
     cursor: pointer;
     transition: background-color 0.3s, border-color 0.3s, color 0.3s;
     margin-top: 24px;
+    font-weight: 800;
   }
   
-  .custom-button:hover {
+.shop-button:hover {
     background-color: transparent;
     border: 1px solid white;
-  }
+}
 .book-section h2{
     padding: 0 0 36px;
     width: 100%;
     font-size: 45px;
+}
+.catagory-section-heading{
+    padding: 0 0 36px;
+    width: 100%;
+    position: relative;
+    display: block;
+}
+.book-section{
+    background-color: var(--primary-bg);
+    border-radius: 30px;
+    transition: background 0.3s, border 0.3s, border-radius 0.3s, box-shadow 0.3s;
+    padding: 2em 1em 2em 1em;
+}
+.newrelease-section h3{
+   color:var(--primary-button);
+   font-size: 18px;
+    font-weight: 600;
+}
+.book-section img{
+    width: 100%;
+    height: 450px;
+    object-fit: cover;
+    object-position: center center;
+    filter: brightness(100%) contrast(100%) saturate(40%) blur(0px) hue-rotate(0deg);
+    transition-duration: 1s;
+    border-radius: 30px 30px 30px 30px;
+}
+.newrelease-section
+{
+    margin: 0 auto;
+    background-color: var(--primary-bg);
+    background-image: url(/src/assets/images/bg.jpg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    transition: background 0.3s, border 0.3s, border-radius 0.3s, box-shadow 0.3s;
+}
+.background-overlay{
+    background-color: var(--primary-bg);
+    background-image: url(/src/assets/images/Paper-Texture.jpg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 0.5;
+    transition: background 0.3s, border-radius 0.3s, opacity 0.3s;
 }
