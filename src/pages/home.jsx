@@ -39,7 +39,7 @@ const HomePage = () => {
     const fetchCategories = async () => {
       try {
         const response = await axios.get(
-          `https://www.googleapis.com/books/v1/volumes/zyTCAlFPjgYC?key=AIzaSyDVWXR1mWrYxS7Th4nZElV599GnDPjI5MI`
+          `https://www.googleapis.com/books/v1/volumes`
         );
         if (response.data && response.data.categoryStats && response.data.categoryStats.mostPopular) {
           setCategories(response.data.categoryStats.mostPopular);
