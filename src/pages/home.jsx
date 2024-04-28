@@ -39,7 +39,7 @@ const HomePage = () => {
     const fetchCategories = async () => {
       try {
         const response = await axios.get(
-          `https://www.googleapis.com/books/v1/volumes`
+          `https://www.googleapis.com/books/v1/volumes/zyTCAlFPjgYC?key=AIzaSyDVWXR1mWrYxS7Th4nZElV599GnDPjI5MI`
         );
         if (response.data && response.data.categoryStats && response.data.categoryStats.mostPopular) {
           setCategories(response.data.categoryStats.mostPopular);
@@ -80,34 +80,13 @@ const HomePage = () => {
       <div className="bg-image d-flex align-items-center justify-content-start">
         <div className="text-white banner-content">
           <h1>Grab your next <br></br>favorite book</h1>
-          <p>Books are the quietest and most constant of friends; they are the most accessible and wisest of counselors, and the most patient of teachers</p>
+          <p className="text-white">Books are the quietest and most constant of friends; they are the most accessible and wisest of counselors, and the most patient of teachers</p>
 
           <button className="shop-button">DISCOVER YOUR NEXT BOOK</button>
         </div>
       </div>
 
-      {/* <section className="book-section">
-        <div className="container">
-          <h2 className='text-center mb-4'>Discover Your Next Book</h2>
-          <div className="book-list row justify-content-center">
-            <input
-              type="text"
-              placeholder="Search products..."
-              value={searchTerm}
-              onChange={handleSearchChange}
-            />
-            <div className="product-list">
-              {books.map(book => (
-                <div key={book.id} className="">
-                  <img src={book.formats['image/jpeg']} alt={book.title} className="img-fluid" />
-                  <h3>{book.title}</h3>
-                  <p>{book.authors.join(', ')}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section> */}
+    
       <section className="shop-by-category">
         <div className="container">
           <h2 className="section-heading text-center py-5">Shop by Category</h2>

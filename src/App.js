@@ -13,6 +13,10 @@ import ItemDetails from "./pages/details";
 import { ProductProvider } from "./ProductContext";
 import Login from "./pages/login";
 import Category from "./pages/category";
+import About from "./pages/aboutus";
+import SearchPage from "./pages/search";
+import Contactus from "./pages/contactus";
+
 function App() {
   const rootElement = document.getElementById("root");
   const root = createRoot(rootElement);
@@ -24,10 +28,10 @@ function App() {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/home" element={<HomePage />} />
-            <Route path="/aboutus" element={<HomePage />} />
-            <Route path="/search" element={<Category/>} />
+            <Route path="/aboutus" element={<About />} />
+            <Route path="/search" element={<SearchPage/>} />
             <Route path="/details" element={<ItemDetails />} />
-            <Route path="/contactus" element={<Category/>} />
+            <Route path="/contactus" element={<Contactus />} />
           </Routes>
         </ProductProvider>
       </BrowserRouter>

@@ -18,11 +18,11 @@ const Header = () => {
     <Navbar.Brand href="/home"><img src={logo} width={100} height={100} alt="Logo" /></Navbar.Brand>
     <Navbar.Toggle aria-controls="basic-navbar-nav" />
     <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
-      <Nav>
+      <Nav className="ml-3 mr-3">
         <Nav.Link href="/home">HOME</Nav.Link>
         <Nav.Link href="/aboutus">ABOUT US</Nav.Link>
         <Nav.Link href="/search">SEARCH</Nav.Link>
-        <Nav.Link href="/search">CONTACTUS</Nav.Link>
+        <Nav.Link href="/contactus">CONTACTUS</Nav.Link>
       </Nav>
     </Navbar.Collapse>
   </Container>

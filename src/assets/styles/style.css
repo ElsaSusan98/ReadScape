@@ -35,7 +35,11 @@ h2{
     color: #121212;
 }
 p{
-    font-size: 18px;
+    font-size: 16px;
+    color: var(--primary-font-color);
+    line-height: 30px;
+    font-weight: 300;
+    padding: 10px;
 }
 body{
     font-family: 'Roboto', sans-serif;
@@ -43,6 +47,7 @@ body{
 :root{
     --primary-bg: #FAF9F5;
     --primary-button:#F13B3A;
+    --primary-font-color:#797979;
 
 }
 section{
@@ -62,14 +67,19 @@ nav ul {
   
 nav ul li {
     display: inline;
-    margin-right: 1rem;
+    margin-right: 40px;
 }
-  
+
 nav ul li a {
     color: #fff;
     text-decoration: none;
 }
-
+#basic-navbar-nav{
+    margin: 0 40px !important;
+}
+.navbar-nav a{
+    margin: 0 10px !important;
+}
 .bg-image {
     position: relative;
     background: linear-gradient(rgba(8, 8, 8, 0.3), rgba(8, 8, 8, 0.3)), url('../images/banner.jpeg');
@@ -97,8 +107,50 @@ nav ul li a {
     background-size: cover !important;
     background-position: center;
     background-repeat: no-repeat;
-    min-height: 70vh;
-    padding: 7% 2%;
+    min-height: 50vh;
+    padding: 50px 30px;
+    position: relative;
+}
+.bg-footer .footer-overlay{
+    opacity: 0.8;
+    transition: background 0.3s, border-radius 0.3s, opacity 0.3s;
+    background-color: #282828;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    position: absolute;
+}
+.bg-footer p{
+    color: #FFFFFF;
+}
+
+.bg-footer img ,
+.bg-footer p ,
+.bg-footer a,
+.bg-footer h5,
+.bg-footer li {
+    position: relative;
+    z-index: 1;
+    text-decoration: none;
+    color: #fff;
+    line-height: 35px;
+  }
+.bg-footer h5{
+    font-size: 28px;
+    margin-bottom: 14px;
+}
+.social-icon ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.social-icon ul li {
+    display: inline-block;
+    margin-right: 25px;
+}
+.social-icon .svg-inline--fa{
+    height: 24px;
 }
 .shop-button {
     background-color: var(--primary-button);
@@ -166,4 +218,83 @@ nav ul li a {
     background-size: cover;
     opacity: 0.5;
     transition: background 0.3s, border-radius 0.3s, opacity 0.3s;
+}
+.inner-section {
+    padding: 50px;
+    text-align: center;
+    background-image: url(/src/assets/images/banner_iner.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white;
+    background-position: center center;
+    height: 300px;
+}
+.inner-section h1{
+    font-weight: 800;
+}
+.about-our-section{
+    padding-top: 70px;
+}
+.contact-btn-style{
+    background-color: var(--primary-button);
+    color: white;
+    border-style: solid;
+    border-width: 0px 0px 0px 0px;
+    border-radius: 30px 30px 30px 30px;
+    padding: 11px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+    margin-top: 24px;
+    font-weight: 800;
+}
+.contact-btn-style:hover {
+    background-color: #282828;
+    border: 1px solid #282828;
+}
+.contact-us-btn{
+    margin-left: 12px;
+}
+.customer-section{
+   background-color: var(--primary-bg);
+   margin: o auto !important;
+}
+.features-section{
+    background-color: var(--primary-bg);
+    padding: 100px;
+}
+.features-section h4{
+    margin-top: 10px;
+}
+.features-section .svg-inline--fa{
+    color: var(--primary-button);
+}
+.review-section{
+    padding: 40px 0px 40px 0px;
+}
+.review-section img{
+    width: auto;
+    height: 150px;
+}
+.carousel-control-next, .carousel-control-prev{
+    color: #121212 !important;
+    width: 15%;
+}
+.review-section .carousel-item{
+    padding: 0 15%;
+}
+.contact-info-wrapper {
+    background-color: var(--primary-bg);
+    border: 1px solid #eaeaea;
+    overflow: hidden;
+    padding: 40px 15px 34px;
+    text-align: center;
+}
+.contact-info-icon {
+    margin-bottom: 20px;
+}
+.contact-info-content h4 {
+    color: #424242;
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 10px;
 }
