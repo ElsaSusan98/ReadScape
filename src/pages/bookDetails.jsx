@@ -4,26 +4,24 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { fetchBookDetails } from '../googleBookservice';
 
-const BookDetailsPage = ({ bookId }) => {
-  const [book, setBook] = useState(null);
-  console.log("book is",bookId);
+const BookDetailsPage = ({ books }) => {
+  const [bookDetails, setBookDetails] = useState(null);
+console.log("what",books);
 
+  
   useEffect(() => {
     const getBookDetails = async () => {
       try {
-        //const bookDetails = await fetchBookDetails(bookId);
-        //setBook(bookDetails);
+        const bookId = book.id;
+        const bookDetails = await fetchBookDetails(bookId);
+        setBookDetails(bookDetails);
       } catch (error) {
         console.error('Error fetching book details:', error);
       }
     };
 
     getBookDetails();
-  }, [bookId]);
-
-  if (!book) {
-    return <div>Loading...</div>;
-  }
+  }, [book]);
 
   const { title, imageLinks, description, saleInfo } = book.volumeInfo || {};
 
@@ -51,3 +49,4 @@ const BookDetailsPage = ({ bookId }) => {
 };
 
 export default BookDetailsPage;
+

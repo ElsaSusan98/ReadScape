@@ -60,11 +60,11 @@ const SearchPage = () => {
       console.error('Error fetching books:', error);
     }
   };
-
   const handleBookClick = (book) => {
-    setSelectedBookId(book.id);
+    setSelectedBookId(book);
     navigate('/details');
   };
+ 
 
   return (
     <>
