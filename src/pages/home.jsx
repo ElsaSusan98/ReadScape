@@ -60,11 +60,11 @@ const HomePage = () => {
     product.title.toLowerCase().includes(searchTerm.toLowerCase())
 
   );
-  const handleNavigation = (product) => {
-    console.log(product)
-    navigate('/details');
-    updateSelectedProduct(product)
-  }
+  // const handleNavigation = (product) => {
+  //   console.log(product)
+  //   navigate('/details');
+  //   updateSelectedProduct(product)
+  // }
 
   if (loading) {
     return (

@@ -20,7 +20,7 @@ dl, ol, ul {
 ol, ul {
     padding-left: 2rem;
 }
-.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6,span {
     margin-top: 0;
     margin-bottom: 0.5rem;
     font-weight: 500;
@@ -298,3 +298,28 @@ nav ul li a {
     font-weight: 600;
     margin-bottom: 10px;
 }
+.sidebar_widget{
+    position: sticky;
+    background-color: var(--primary-bg);
+}
+.sidebar_inner{
+    padding:30px;
+    color: #121212;
+}
+.sidebar .cat_heading{
+    font-size: 25px;    
+    font-weight: 600;
+}
+.sidebar .list-group-item{
+    background-color: transparent;
+    font-size: 18px;
+}
+.sidebar .list-group-item {
+    cursor: pointer;
+    padding: 10px 20px;
+    font-weight: 600;
+  }
+  
+  .sidebar .list-group-item:hover, .sidebar .list-group-item.active {
+    color: var(--primary-button);
+  }

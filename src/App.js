@@ -8,14 +8,11 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 import HomePage from "./pages/home";
-import ItemDetails from "./pages/details";
-
 import { ProductProvider } from "./ProductContext";
-import Login from "./pages/login";
-import Category from "./pages/category";
 import About from "./pages/aboutus";
 import SearchPage from "./pages/search";
 import Contactus from "./pages/contactus";
+import BookDetailsPage from "./pages/bookDetails";
 
 function App() {
   const rootElement = document.getElementById("root");
@@ -30,7 +27,7 @@ function App() {
             <Route path="/home" element={<HomePage />} />
             <Route path="/aboutus" element={<About />} />
             <Route path="/search" element={<SearchPage/>} />
-            <Route path="/details" element={<ItemDetails />} />
+            <Route path="/details" element={<BookDetailsPage />} />
             <Route path="/contactus" element={<Contactus />} />
           </Routes>
         </ProductProvider>

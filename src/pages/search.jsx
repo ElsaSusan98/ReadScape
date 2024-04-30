@@ -1,96 +1,100 @@
 import React, { useState, useEffect } from 'react';
-import { Form } from 'react-bootstrap';
-import { useNavigate } from 'react-router-dom';
-import { useProductContext } from '../ProductContext';
+import { Col, Container, Row } from 'react-bootstrap';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import fetchBooks from '../googleBookservice';
-import { Col, Container, ListGroup, Row } from 'react-bootstrap';
+import Sidebar from '../components/CatagorySidebar';
+import BooksList from '../components/BooksList';
+import { useNavigate } from 'react-router-dom';
+import BookDetailsPage from './bookDetails';
+import { fetchBooks } from '../googleBookservice';
 
-const categories = [
-    { value: '', label: 'All' },
-    { value: 'fiction', label: 'Fiction' },
-    { value: 'history', label: 'History' },
-    { value: 'science', label: 'Science' },
-    { value: 'technology', label: 'Technology' }
-  ];
-  
 const SearchPage = () => {
   const [books, setBooks] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
-  const [category, setCategory] = useState('');
-
+  const [category, setCategory] = useState('All');
+  const [selectedBookId, setSelectedBookId] = useState(null);
   const navigate = useNavigate();
-  const { updateSelectedProduct } = useProductContext();
 
-  const handleSearchChange = (e) => {
-    setSearchTerm(e.target.value);
-  };
-
-  const handleCategoryChange = (e) => {
-    setCategory(e.target.value);
-  };
+  useEffect(() => {
+    const getDefaultBooks = async () => {
+      try {
+        const defaultBooks = await fetchBooks('q=subject:javascript');
+        setBooks(defaultBooks || []);
+      } catch (error) {
+        console.error('Error fetching default books:', error);
+      }
+    };
+    getDefaultBooks();
+  }, []);
 
   useEffect(() => {
     const getBooks = async () => {
-      const data = await fetchBooks(searchTerm, category);
-      setBooks(data || []);
+      try {
+        let query = '';
+        if (searchTerm) {
+          query += `q=${encodeURIComponent(searchTerm)}`;
+        } else if (category) {
+          query += category === 'All' ? `q=subject:all` : `q=subject:${encodeURIComponent(category)}`;
+        }
+        const data = await fetchBooks(query);
+        setBooks(data || []);
+      } catch (error) {
+        console.error('Error fetching books:', error);
+      }
     };
 
     getBooks();
   }, [searchTerm, category]);
 
-  const handleNavigation = (book) => {
+  const handleSearchChange = (e) => {
+    setSearchTerm(e.target.value);
+  };
+
+  const handleCategoryClick = async (cat) => {
+    try {
+      const query = cat === 'All' ? `q=subject:all` : `q=subject:${encodeURIComponent(cat)}`;
+      const data = await fetchBooks(query);
+      setBooks(data || []);
+      setCategory(cat);
+    } catch (error) {
+      console.error('Error fetching books:', error);
+    }
+  };
+
+  const handleBookClick = (book) => {
+    setSelectedBookId(book.id);
     navigate('/details');
-    updateSelectedProduct(book);
   };
 
   return (
     <>
-    <Header/>
+      <Header />
       <div className="inner-section d-flex align-items-center">
         <Container>
           <h1 className="text-white font-weight-bold">Search</h1>
         </Container>
       </div>
-      <Container>
+      <Container style={{ marginBottom: '20px' }}>
         <section className="book-section">
           <div className="container">
             <h2 className="text-center mb-4">Discover Your Next Book</h2>
             <div className="book-list row justify-content-center">
-              <Form.Group as={Col} md={8} className="text-center">
-                <Form.Label>Search Term</Form.Label>
-                <Form.Control
-                  type="text"
-                  placeholder="Enter search term"
-                  value={searchTerm}
-                  onChange={handleSearchChange}
-                />
-              </Form.Group>
+              <input
+                type="text"
+                placeholder="Enter search term"
+                value={searchTerm}
+                onChange={handleSearchChange}
+              />
             </div>
           </div>
         </section>
         <Row>
-          <Col md={4}>
-            <h2>Categories</h2>
-            <ListGroup>
-              {categories.map((cat, index) => (
-                <ListGroup.Item key={index} active={category === cat.value} onClick={() => setCategory(cat.value)}>
-                  {cat.label}
-                </ListGroup.Item>
-              ))}
-            </ListGroup>
-          </Col>
-          <Col md={8}>
-            <h2>Books</h2>
-            <ListGroup>
-              {books.map((book) => (
-                <ListGroup.Item key={book.id} onClick={() => handleNavigation(book)}>
-                  {book.volumeInfo.title}
-                </ListGroup.Item>
-              ))}
-            </ListGroup>
-          </Col>
+          <Sidebar category={category} setCategory={handleCategoryClick} />
+          {selectedBookId ? (
+            <BookDetailsPage bookId={selectedBookId} />
+          ) : (
+            <BooksList books={books} handleBookClick={handleBookClick} />
+          )}
         </Row>
       </Container>
       <Footer />
