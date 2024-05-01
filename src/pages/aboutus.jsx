@@ -18,9 +18,9 @@ const About = () => {
   const handleSelect = (selectedIndex) => {
     setIndex(selectedIndex);
   };
-return(
-<>
-<Header/>
+  return (
+    <>
+      <Header />
       <div className="inner-section d-flex align-items-center">
         <Container>
           <h1 class="text-white font-weight-bold">About Us</h1>
@@ -35,96 +35,91 @@ return(
         <div id="aboutUsSection" className="about-us-area">
           <Container>
             <Row className="align-items-center flex-wrap-reverse">
-            <Col md={6}>
+              <Col md={6}>
                 <div className="about-us-img">
                   <img alt="book-reading" src={ladies} className="img-fluid" />
                 </div>
               </Col>
               <Col md={6}>
-                <div className="about-us-content">
+                <div className="about-us-content text-center text-md-left">
                   <p>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
                     labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
                     laboris nisi ut aliquip ex ea commodo consequat.
                   </p>
-                  
                 </div>
               </Col>
-             
             </Row>
           </Container>
         </div>
       </section>
 
-    <div className="features-section">
-    <Container>
-      <Row>
-        <Col md={4}>
-          <div className="feature text-center py-4">
-            <FontAwesomeIcon icon={faGift} size="4x" />
-            <h4>Make the Best Choice</h4>
-            <p>Porttitor eleifend facilisi euismod litora etiam consectetur. Vivamus platea quisque mauris si blandit diam id a primis himenaeos. Natoque vulputate duis nec </p>
-           
-          </div>
-        </Col>
-        <Col md={4}>
-          <div className="feature text-center py-4">
-            <FontAwesomeIcon icon={faPenNib} size="4x" />
-            <h4>Find Your Favorite Authors</h4>
-            <p>Porttitor eleifend facilisi euismod litora etiam consectetur. Vivamus platea quisque mauris si blandit diam id a primis himenaeos. Natoque vulputate duis nec </p>
-            
-          </div>
-        </Col>
-        <Col md={4}>
-          <div className="feature text-center py-4">
-            <FontAwesomeIcon icon={faComment} size="4x" />
-            <h4>Read Reader’s Reviews</h4>
-            <p>Porttitor eleifend facilisi euismod litora etiam consectetur. Vivamus platea quisque mauris si blandit diam id a primis himenaeos. Natoque vulputate duis nec </p>
-           
-          </div>
-        </Col>
-      </Row>
-    </Container>
-  </div>
-  <section className="review-section">
-      <Container>
-        <h2 className="text-center mb-4">Customer Reviews</h2>
-        <Row>
-          <Col>
-            <Carousel
-              nextIcon={<FontAwesomeIcon icon={faChevronRight} />}
-              prevIcon={<FontAwesomeIcon icon={faChevronLeft} />}
-            >
-              <Carousel.Item>
-                <div className="review-item text-center px-3">
-                  <img src={testimonial1} alt="John Doe" className="img-fluid rounded-circle mb-3" />
-                  <h4>John Doe</h4>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in neque eget velit ornare pretium. In hac habitasse platea dictumst.Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
-                </div>
-              </Carousel.Item>
-              <Carousel.Item>
-                <div className="review-item text-center px-3">
-                  <img src={testimonial2} alt="Jane Smith" className="img-fluid rounded-circle mb-3" />
-                  <h4>Jane Smith</h4>
-                  <p>Fusce quis lectus eu ex rutrum scelerisque. Sed eget ante sed risus condimentum placerat. Vivamus vestibulum risus vel nisi eleifend, in varius neque luctus.Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
-                </div>
-              </Carousel.Item>
-              <Carousel.Item>
-                <div className="review-item text-center px-3">
-                  <img src={testimonial3} alt="Mike Johnson" className="img-fluid rounded-circle mb-3" />
-                  <h4>Debora Johnson</h4>
-                  <p>Pellentesque rhoncus, libero id tincidunt lobortis, est magna facilisis purus, eget ultricies arcu odio a libero.Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
-                </div>
-              </Carousel.Item>
-            </Carousel>
-          </Col>
-        </Row>
-      </Container>
-    </section>
-<Footer/>
-</>
+      <div className="features-section">
+        <Container>
+          <Row>
+            <Col md={4}>
+              <div className="feature text-center py-4">
+                <FontAwesomeIcon icon={faGift} size="4x" />
+                <h4>Make the Best Choice</h4>
+                <p>Porttitor eleifend facilisi euismod litora etiam consectetur. Vivamus platea quisque mauris si blandit diam id a primis himenaeos. Natoque vulputate duis nec </p>
+              </div>
+            </Col>
+            <Col md={4}>
+              <div className="feature text-center py-4">
+                <FontAwesomeIcon icon={faPenNib} size="4x" />
+                <h4>Find Your Favorite Authors</h4>
+                <p>Porttitor eleifend facilisi euismod litora etiam consectetur. Vivamus platea quisque mauris si blandit diam id a primis himenaeos. Natoque vulputate duis nec </p>
+              </div>
+            </Col>
+            <Col md={4}>
+              <div className="feature text-center py-4">
+                <FontAwesomeIcon icon={faComment} size="4x" />
+                <h4>Read Reader’s Reviews</h4>
+                <p>Porttitor eleifend facilisi euismod litora etiam consectetur. Vivamus platea quisque mauris si blandit diam id a primis himenaeos. Natoque vulputate duis nec </p>
+              </div>
+            </Col>
+          </Row>
+        </Container>
+      </div>
 
-
-)};
+      <section className="review-section">
+        <Container>
+          <h2 className="text-center mb-4">Customer Reviews</h2>
+          <Row>
+            <Col>
+              <Carousel
+                nextIcon={<FontAwesomeIcon icon={faChevronRight} />}
+                prevIcon={<FontAwesomeIcon icon={faChevronLeft} />}
+              >
+                <Carousel.Item>
+                  <div className="review-item text-center px-3">
+                    <img src={testimonial1} alt="John Doe" className="img-fluid rounded-circle mb-3" />
+                    <h4>John Doe</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in neque eget velit ornare pretium. In hac habitasse platea dictumst.Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                  </div>
+                </Carousel.Item>
+                <Carousel.Item>
+                  <div className="review-item text-center px-3">
+                    <img src={testimonial2} alt="Jane Smith" className="img-fluid rounded-circle mb-3" />
+                    <h4>Jane Smith</h4>
+                    <p>Fusce quis lectus eu ex rutrum scelerisque. Sed eget ante sed risus condimentum placerat. Vivamus vestibulum risus vel nisi eleifend, in varius neque luctus.Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                  </div>
+                </Carousel.Item>
+                <Carousel.Item>
+                  <div className="review-item text-center px-3">
+                    <img src={testimonial3} alt="Mike Johnson" className="img-fluid rounded-circle mb-3" />
+                    <h4>Debora Johnson</h4>
+                    <p>Pellentesque rhoncus, libero id tincidunt lobortis, est magna facilisis purus, eget ultricies arcu odio a libero.Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                  </div>
+                </Carousel.Item>
+              </Carousel>
+            </Col>
+          </Row>
+        </Container>
+      </section>
+      <Footer />
+    </>
+  );
+};
 
 export default About;

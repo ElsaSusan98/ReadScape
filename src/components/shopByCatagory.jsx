@@ -16,9 +16,9 @@ const categories = [
     return (
         <Container>
         <h2 className="section-heading text-center py-5">Shop by Category</h2>
-        <Row>
+        <Row xs={1} md={2} lg={4} className="g-4">
           {categories.map((category) => (
-            <Col key={category.id} lg={3} md={4} sm={6} xs={6}>
+            <Col key={category.id} className="mb-4">
               <div
                 className="category-item-home text-center"
                 onClick={() => handleCategoryhomeClick(category.name)}
@@ -29,9 +29,11 @@ const categories = [
             </Col>
           ))}
         </Row>
-        <div className="text-center mt-5 catagory-div">
-          <Button className="shop-button" href="/search">VIEW MORE</Button>
-        </div>
+        <Row>
+          <Col className="text-center mt-5">
+            <Button className="shop-button" as={Link} to="/search">VIEW MORE</Button>
+          </Col>
+        </Row>
       </Container>
     );
   };

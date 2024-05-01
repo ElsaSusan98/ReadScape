@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { Col, Container, Form, Row,Spinner } from 'react-bootstrap';
+import { Col, Container, Form, Row, Spinner } from 'react-bootstrap';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Sidebar from '../components/CatagorySidebar';
@@ -69,7 +69,7 @@ const SearchPage = () => {
   const handleBookClick = (book) => {
     handleBookId(book);
     navigate('/details');
-    console.log(book,"vbook");
+    console.log(book, "vbook");
   };
 
   if (loading) {
@@ -92,10 +92,10 @@ const SearchPage = () => {
       </div>
       <Container style={{ marginBottom: '20px' }}>
         <section className="book-section">
-          <div className="container">
+          <Container>
             <h2 className="text-center mb-4">Discover Your Next Book</h2>
             <div className="book-list searchbar">
-            <Form.Control
+              <Form.Control
                 type="text"
                 placeholder="Enter search term"
                 value={searchTerm}
@@ -103,13 +103,11 @@ const SearchPage = () => {
               />
               <FontAwesomeIcon icon={faSearch} className="search-icon" />
             </div>
-          </div>
+          </Container>
         </section>
         <Row>
           <Sidebar category={category} setCategory={handleCategoryClick} />
-       
-            <BooksList books={books}  handleBookClick={handleBookClick} />
-    
+          <BooksList books={books} handleBookClick={handleBookClick} />
         </Row>
       </Container>
       <Footer />

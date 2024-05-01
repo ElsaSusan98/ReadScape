@@ -26,7 +26,7 @@ const Sidebar = ({ category, setCategory }) => {
 
     return (
         <Col md={3}>
-            <div className='sidebar sidebar_widget'>
+            <div className='sidebar sidebar_widget mb-5'>
                 <div className='sidebar_inner'>
                     <span className='cat_heading'>Categories</span>
                     <ListGroup variant="flush">
