@@ -16,14 +16,14 @@ const Header = () => {
 
   <Navbar expand="lg" className="bg-body-tertiary">
   <Container>
-    <Navbar.Brand as={Link} href="/home"><img src={logo} width={100} height={100} alt="Logo" /></Navbar.Brand>
+    <Navbar.Brand as={Link} to="/home"><img src={logo} width={100} height={100} alt="Logo" /></Navbar.Brand>
     <Navbar.Toggle aria-controls="basic-navbar-nav" />
     <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
       <Nav className="ml-3 mr-3">
-        <Nav.Link as={Link} href="/home">HOME</Nav.Link>
-        <Nav.Link as={Link} href="/aboutus">ABOUT US</Nav.Link>
-        <Nav.Link as={Link} href="/search">SEARCH</Nav.Link>
-        <Nav.Link as={Link} href="/contactus">CONTACTUS</Nav.Link>
+        <Nav.Link as={Link} to="/home">HOME</Nav.Link>
+        <Nav.Link as={Link} to="/aboutus">ABOUT US</Nav.Link>
+        <Nav.Link as={Link} to="/search">SEARCH</Nav.Link>
+        <Nav.Link as={Link} to="/contactus">CONTACTUS</Nav.Link>
       </Nav>
     </Navbar.Collapse>
   </Container>
