@@ -518,6 +518,7 @@ nav ul li a {
   .catagory_list_column .card {
     display: flex;
     flex-direction: column;
+    cursor: pointer;
   }
   
   .catagory_list_column .card-body {

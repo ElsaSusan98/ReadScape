@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { Container, Row, Col, Card ,Spinner} from 'react-bootstrap';
 import { BookContext } from '../contexts/BookContext';
 import Header from '../components/Header';
@@ -7,7 +7,15 @@ import Footer from '../components/Footer';
 
 
 const CategoryPage = () => {
-  const { catagorylist } = useContext(BookContext);
+  const { catagorylist, handleBookClick: handleBookClickSearch } = useContext(BookContext);
+  const navigate = useNavigate();
+
+  const handleBookClickCategory = (book) => {
+    handleBookClickSearch(book); // Passing the book to the handleBookClick function from the search page
+    navigate('/details');
+    console.log(book,"item");
+  };
+
   return (
     <>
       <Header />
@@ -21,7 +29,7 @@ const CategoryPage = () => {
           {catagorylist &&
             catagorylist.map((item, index) => (
               <Col key={index} className="mb-4 catagory_list_column">
-                <Card className="h-100">
+                <Card className="h-100" onClick={() => handleBookClickCategory(item)} >
                   <Card.Img
                     variant="top"
                     src={item.volumeInfo.imageLinks?.thumbnail}
