@@ -10,7 +10,7 @@ import { Button, Col, Container, Row, Spinner } from 'react-bootstrap';
 import { BookContext } from '../contexts/BookContext';
 import Newarrivals from '../components/Newarrivals';
 import ShopByCategory from '../components/shopByCatagory';
-
+import { Link } from 'react-router-dom';
 
 
 const HomePage = () => {
@@ -52,7 +52,7 @@ const HomePage = () => {
             <div className="text-white banner-content">
               <h1>Grab your next <br />favorite book</h1>
               <p className="text-white">Books are the quietest and most constant of friends; they are the most accessible and wisest of counselors, and the most patient of teachers</p>
-              <Button className="shop-button" href="/search">DISCOVER YOUR NEXT BOOK</Button>
+              <Button className="shop-button" as={Link} to="/search">DISCOVER YOUR NEXT BOOK</Button>
             </div>
           </Col>
         </Row>
@@ -70,7 +70,7 @@ const HomePage = () => {
                 convallis mauris a nisi varius, a fermentum velit tincidunt.
               </p>
               <div className="text-md-start text-center mt-md-0 mb-3">
-                <Button className="shop-button" href="/search">
+                <Button className="shop-button" as={Link} to="/search">
                   DISCOVER YOUR NEXT BOOK
                 </Button>
               </div>
