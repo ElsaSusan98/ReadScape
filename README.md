@@ -4,7 +4,7 @@ Readscape is a web application designed to bring the joy of reading to users by 
 
 ## Live Deployment
 
-You can find the live deployment of Readscape [https://main--idyllic-bonbon-ea3863.netlify.app/home].
+You can find the live deployment of Readscape [https://main--idyllic-bonbon-ea3863.netlify.app/].
 
 ## Features
 
