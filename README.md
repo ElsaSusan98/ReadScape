@@ -46,6 +46,16 @@ REACT_APP_GOOGLE_BOOKS_API_KEY="YOUR_API_KEY"
 npm start
 
 
+## Google Books API Limit
+
+Please note that the Google Books API has a usage limit. The standard API usage limit is 1000 requests per day per user. If you encounter any issues related to API quota, please wait until the quota is reset.
+
+For more information about the usage limits of the Google Books API, please refer to the [official documentation](https://developers.google.com/books/docs/v1/using#APIKey).
+
+## Credits
+
+This project uses the [Google Books API](https://developers.google.com/books) to fetch book data.
+
 ## Contributions
 
 Contributions are welcome! If you have any suggestions or find any issues, feel free to open an issue or create a pull request.
