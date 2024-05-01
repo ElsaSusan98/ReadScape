@@ -1,77 +1,59 @@
-import React, { useState, useEffect } from 'react';
+import React, { useContext, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import { useProductContext } from '../ProductContext';
 import Header from '../components/Header';
-import drama from '../assets/images/drama.jpeg'
-import novel from '../assets/images/novel.jpeg'
-import series from '../assets/images/series.jpeg'
-import romance from '../assets/images/romantic.jpeg'
 import book from '../assets/images/background.png'
 import type from '../assets/images/type.jpeg'
 import '../assets/styles/style.css';
 import Footer from '../components/Footer';
+import ShopByCategory from '../components/shopByCatagory';
+import { Button, Spinner } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import drama from '../assets/images/drama.jpeg'
+import novel from '../assets/images/novel.jpeg'
+import series from '../assets/images/series.jpeg'
+import romance from '../assets/images/romantic.jpeg'
+import { CatagoryfetchBooks } from '../googleBookservice';
+import { BookContext } from '../contexts/BookContext';
+import book1 from '../assets/images/book1.png';
+import book2 from '../assets/images/book2.png';
+import book3 from '../assets/images/book3.png';
+import book4 from '../assets/images/book4.png';
+
+const categories = [
+  { id: 1, name: 'Drama', image: drama },
+  { id: 2, name: 'Romance', image: romance },
+  { id: 3, name: 'Novel', image: novel },
+  { id: 4, name: 'Recipes', image: series },
+];
+
 const HomePage = () => {
-  const [products, setProducts] = useState([]);
-  const [books, setBooks] = useState([]);
-  const [searchTerm, setSearchTerm] = useState('');
-  const [loading, setLoading] = useState(false)
-  const navigate = useNavigate()
-  const { updateSelectedProduct } = useProductContext();
-  const [categories, setCategories] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
+  const { handleCategoryClick } = useContext(BookContext);
 
-  useEffect(() => {
-    const fetchBooks = async () => {
+  const handleCategoryhomeClick = async (catName) => {
+    try {
       setLoading(true);
-      try {
-        const response = await axios.get('https://gutendex.com/books');
-        setBooks(response.data.results.slice(0, 6)); // Slice the array to get the first 10 books
-      } catch (error) {
-        console.error('Error fetching books:', error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchBooks();
-  }, []);
-  useEffect(() => {
-    const fetchCategories = async () => {
-      try {
-        const response = await axios.get(
-          `https://www.googleapis.com/books/v1/volumes/zyTCAlFPjgYC?key=AIzaSyDVWXR1mWrYxS7Th4nZElV599GnDPjI5MI`
-        );
-        if (response.data && response.data.categoryStats && response.data.categoryStats.mostPopular) {
-          setCategories(response.data.categoryStats.mostPopular);
-        }
-      } catch (error) {
-        console.error('There was a problem fetching the categories: ', error);
-      }
-    };
-
-    fetchCategories();
-  }, []);
-
-  const handleSearchChange = (event) => {
-    setSearchTerm(event.target.value);
+      await handleCategoryClick(catName);
+      navigate(`/category/${catName}`);
+    } catch (error) {
+      console.error('Error fetching books:', error);
+    } finally {
+      setLoading(false);
+    }
   };
 
-  const filteredProducts = products.filter((product) =>
-    product.title.toLowerCase().includes(searchTerm.toLowerCase())
 
-  );
-  // const handleNavigation = (product) => {
-  //   console.log(product)
-  //   navigate('/details');
-  //   updateSelectedProduct(product)
-  // }
 
   if (loading) {
     return (
-      <div>
-        <h1>Loading.........</h1>
+      <div className="d-flex justify-content-center align-items-center" style={{ height: '100vh' }}>
+        <Spinner animation="border" role="status">
+          <span className="visually-hidden">Loading...</span>
+        </Spinner>
       </div>
-    )
+    );
   }
   return (
     <div>
@@ -82,54 +64,12 @@ const HomePage = () => {
           <h1>Grab your next <br></br>favorite book</h1>
           <p className="text-white">Books are the quietest and most constant of friends; they are the most accessible and wisest of counselors, and the most patient of teachers</p>
 
-          <button className="shop-button">DISCOVER YOUR NEXT BOOK</button>
+          <Button className="shop-button" href="/search">DISCOVER YOUR NEXT BOOK</Button>
         </div>
       </div>
 
-    
-      <section className="shop-by-category">
-        <div className="container">
-          <h2 className="section-heading text-center py-5">Shop by Category</h2>
-          <div className="row">
-            <div className="col-lg-2 col-md-4 col-sm-6">
-              <div className="category-item text-center">
-                <img src={drama} alt="Category 1" className="img-fluid" />
-                <h3>Category 1</h3>
-              </div>
-            </div>
-            <div className="col-lg-2 col-md-4 col-sm-6">
-              <div className="category-item text-center">
-                <img src={romance} alt="Category 2" className="img-fluid" />
-                <h3>Category 2</h3>
-              </div>
-            </div>
-            <div className="col-lg-2 col-md-4 col-sm-6">
-              <div className="category-item text-center">
-                <img src={novel} alt="Category 3" className="img-fluid" />
-                <h3>Category 3</h3>
-              </div>
-            </div>
-            <div className="col-lg-2 col-md-4 col-sm-6">
-              <div className="category-item text-center">
-                <img src={series} alt="Category 4" className="img-fluid" />
-                <h3>Category 4</h3>
-              </div>
-            </div>
-            <div className="col-lg-2 col-md-4 col-sm-6">
-              <div className="category-item text-center">
-                <img src={romance} alt="Category 5" className="img-fluid" />
-                <h3>Category 5</h3>
-              </div>
-            </div>
-            <div className="col-lg-2 col-md-4 col-sm-6">
-              <div className="category-item text-center">
-                <img src={romance} alt="Category 5" className="img-fluid" />
-                <h3>Category 5</h3>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+
+      <ShopByCategory handleCategoryhomeClick={handleCategoryhomeClick} />
       <section className="book-section">
         <div className="container">
           <div className="row align-items-center">
@@ -138,7 +78,7 @@ const HomePage = () => {
                 <h2>Writing books makes the
                   world go round</h2>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam convallis mauris a nisi varius, a fermentum velit tincidunt.</p>
-                <button className="shop-button">DISCOVER YOUR NEXT BOOK</button>
+                <Button className="shop-button" href="/search">DISCOVER YOUR NEXT BOOK</Button>
               </div>
             </div>
             <div className="col-md-6">
@@ -148,7 +88,7 @@ const HomePage = () => {
         </div>
       </section>
       <section className="newrelease-section">
-      <div class="background-overlay"></div>
+        <div class="background-overlay"></div>
         <div className="container">
           <div className="row align-items-center">
             <div className="col-md-6">
@@ -168,45 +108,30 @@ const HomePage = () => {
         <div className="container">
           <h4 className="section-heading py-5">New Arrivals</h4>
           <div className="row">
-            <div className="col-lg-2 col-md-4 col-sm-6">
+            <div className="col-lg-3 col-md-6 col-sm-6 col-6">
               <div className="category-item text-center">
-                <img src={drama} alt="Category 1" className="img-fluid" />
-                <h3>Category 1</h3>
+                <img src={book1} alt="Category 1" className="img-fluid" />
               </div>
             </div>
-            <div className="col-lg-2 col-md-4 col-sm-6">
+            <div className="col-lg-3 col-md-6 col-sm-6 col-6">
               <div className="category-item text-center">
-                <img src={romance} alt="Category 2" className="img-fluid" />
-                <h3>Category 2</h3>
+                <img src={book2} alt="Category 2" className="img-fluid" />
               </div>
             </div>
-            <div className="col-lg-2 col-md-4 col-sm-6">
+            <div className="col-lg-3 col-md-6 col-sm-6 col-6">
               <div className="category-item text-center">
-                <img src={novel} alt="Category 3" className="img-fluid" />
-                <h3>Category 3</h3>
+                <img src={book3} alt="Category 3" className="img-fluid" />
               </div>
             </div>
-            <div className="col-lg-2 col-md-4 col-sm-6">
+            <div className="col-lg-3 col-md-6 col-sm-6 col-6">
               <div className="category-item text-center">
-                <img src={series} alt="Category 4" className="img-fluid" />
-                <h3>Category 4</h3>
-              </div>
-            </div>
-            <div className="col-lg-2 col-md-4 col-sm-6">
-              <div className="category-item text-center">
-                <img src={romance} alt="Category 5" className="img-fluid" />
-                <h3>Category 5</h3>
-              </div>
-            </div>
-            <div className="col-lg-2 col-md-4 col-sm-6">
-              <div className="category-item text-center">
-                <img src={romance} alt="Category 5" className="img-fluid" />
-                <h3>Category 5</h3>
+                <img src={book4} alt="Category 4" className="img-fluid" />
               </div>
             </div>
           </div>
         </div>
       </section>
+
 
       <Footer />
     </div>

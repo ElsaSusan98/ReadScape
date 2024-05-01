@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Col, Container, Row } from 'react-bootstrap';
+import React, { useState, useEffect, useContext } from 'react';
+import { Col, Container, Form, Row,Spinner } from 'react-bootstrap';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Sidebar from '../components/CatagorySidebar';
@@ -7,12 +7,17 @@ import BooksList from '../components/BooksList';
 import { useNavigate } from 'react-router-dom';
 import BookDetailsPage from './bookDetails';
 import { fetchBooks } from '../googleBookservice';
+import { BookContext } from '../contexts/BookContext';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
+
 
 const SearchPage = () => {
+  const { bookDetails, handleBookClick: handleBookId } = useContext(BookContext);
+  const [loading, setLoading] = useState(false);
   const [books, setBooks] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [category, setCategory] = useState('All');
-  const [selectedBookId, setSelectedBookId] = useState(null);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -60,11 +65,22 @@ const SearchPage = () => {
       console.error('Error fetching books:', error);
     }
   };
+
   const handleBookClick = (book) => {
-    setSelectedBookId(book);
+    handleBookId(book);
     navigate('/details');
+    console.log(book,"vbook");
   };
- 
+
+  if (loading) {
+    return (
+      <div className="d-flex justify-content-center align-items-center" style={{ height: '100vh' }}>
+        <Spinner animation="border" role="status">
+          <span className="visually-hidden">Loading...</span>
+        </Spinner>
+      </div>
+    );
+  }
 
   return (
     <>
@@ -78,23 +94,22 @@ const SearchPage = () => {
         <section className="book-section">
           <div className="container">
             <h2 className="text-center mb-4">Discover Your Next Book</h2>
-            <div className="book-list row justify-content-center">
-              <input
+            <div className="book-list searchbar">
+            <Form.Control
                 type="text"
                 placeholder="Enter search term"
                 value={searchTerm}
                 onChange={handleSearchChange}
               />
+              <FontAwesomeIcon icon={faSearch} className="search-icon" />
             </div>
           </div>
         </section>
         <Row>
           <Sidebar category={category} setCategory={handleCategoryClick} />
-          {selectedBookId ? (
-            <BookDetailsPage bookId={selectedBookId} />
-          ) : (
-            <BooksList books={books} handleBookClick={handleBookClick} />
-          )}
+       
+            <BooksList books={books}  handleBookClick={handleBookClick} />
+    
         </Row>
       </Container>
       <Footer />

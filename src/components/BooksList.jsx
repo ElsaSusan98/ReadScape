@@ -9,7 +9,7 @@ const BooksList = ({ books, handleBookClick }) => {
         <Row>
           {books.map((book) => (
             <Col key={book.id} xs={12} sm={6} md={3} lg={4} className="mb-4">
-             <Card onClick={() => handleBookClick(books)} style={{ height: '100%' }}>
+             <Card onClick={() => handleBookClick(book)} style={{ height: '100%' }}>
               {book.volumeInfo.imageLinks && book.volumeInfo.imageLinks.smallThumbnail &&
                 <Card.Img
                   style={{ height: '270px', objectFit: 'cover' }} // Adjust the height as needed

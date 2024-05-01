@@ -8,11 +8,12 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 import HomePage from "./pages/home";
-import { ProductProvider } from "./ProductContext";
 import About from "./pages/aboutus";
 import SearchPage from "./pages/search";
 import Contactus from "./pages/contactus";
 import BookDetailsPage from "./pages/bookDetails";
+import { BookProvider } from "./contexts/BookContext";
+import CategoryPage from "./pages/catagoryPage";
 
 function App() {
   const rootElement = document.getElementById("root");
@@ -21,7 +22,7 @@ function App() {
   root.render(
     <StrictMode>
       <BrowserRouter>
-        <ProductProvider>
+        <BookProvider>
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/home" element={<HomePage />} />
@@ -29,8 +30,9 @@ function App() {
             <Route path="/search" element={<SearchPage/>} />
             <Route path="/details" element={<BookDetailsPage />} />
             <Route path="/contactus" element={<Contactus />} />
+            <Route path="/category/:name" element={<CategoryPage />} />
           </Routes>
-        </ProductProvider>
+        </BookProvider>
       </BrowserRouter>
     </StrictMode>
   );

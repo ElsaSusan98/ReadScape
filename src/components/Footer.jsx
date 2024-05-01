@@ -16,24 +16,24 @@ const Footer = () => {
           <div className="col-lg-3 col-md-6">
             <h5>KNOW MORE</h5>
             <ul className="list-unstyled">
-              <li><a href="#">Home</a></li>
-              <li><a href="#">About</a></li>
-              <li><a href="#">Services</a></li>
-              <li><a href="#">Contact</a></li>
+              <li><a href="/home">Home</a></li>
+              <li><a href="/aboutus">About</a></li>
+              <li><a href="/search">Search</a></li>
+              <li><a href="/contactus">Contact</a></li>
             </ul>
           </div>
           <div className="col-lg-3 col-md-12">
             <h5>HELP</h5>
             <ul className="list-unstyled">
-              <li>OUR STORY</li>
-              <li>BOOK LIST</li>
-              <li>CATAGORY</li>
+              <li><a href="/aboutus">OUR STORY</a></li>
+              <li><a href="/search">BOOK LIST</a></li>
+              <li><a href="/search">CATAGORY</a></li>
             </ul>
           </div>
           <div className="col-lg-3 col-md-12">
             <h5>CONTACT US</h5>
             <ul className="list-unstyled">
-              <li>Email: example@example.com</li>
+              <li>Email: aleyase@roehampton.ac.uk</li>
               <li>Phone: 123-456-7890</li>
             </ul>
             <div class="social-icon">

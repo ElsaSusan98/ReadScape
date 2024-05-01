@@ -5,7 +5,7 @@ const categories = [
     'All',
     'Drama',
     'Novels',
-    'Recipe Books',
+    'Recipe',
     'Fantasy',
     'Fiction',
     'Historical Fiction',

@@ -27,7 +27,16 @@ const fetchBookDetails = async (bookId) => {
     return null;
   }
 };
+const CatagoryfetchBooks = async (categoryName) => {
+  try {
+    const query = categoryName === 'All' ? `q=subject:all` : `q=subject:${encodeURIComponent(categoryName)}`;
+    const response = await axios.get(`https://www.googleapis.com/books/v1/volumes?${query}`);
+    return response.data.items;
+  } catch (error) {
+    console.error('Error fetching books:', error);
+  }
+};
 
 const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
-export { fetchBooks, fetchBookDetails, REQUEST_DELAY };
+export { fetchBooks, fetchBookDetails,CatagoryfetchBooks, REQUEST_DELAY };
