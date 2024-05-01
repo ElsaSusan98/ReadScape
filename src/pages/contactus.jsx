@@ -27,7 +27,7 @@ const Contactus = () => {
                 <div className="contact-info-content">
                   <h4>Our Location</h4>
                   <p>11 Sharon close, Crawley</p>
-                  <p><a href="#">London</a></p>
+                  <p><a href="https://www.google.com/maps/place/11+Sharon+Cl%2C+Crawley+RH10+6QD" target="_blank" rel="noopener noreferrer">London</a></p>
                 </div>
               </div>
             </Col>
@@ -60,7 +60,7 @@ const Contactus = () => {
           <Row>
             <Col>
               <div className="location-map">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2505.215687169981!2d-0.17097842374355887!3d51.10448057172448!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4875f1f18b942ac5%3A0xb248948c7587c4ee!2s11%20Sharon%20Cl%2C%20Crawley%20RH10%206QD!5e0!3m2!1sen!2suk!4v1704920189517!5m2!1sen!2suk" width="100%" height="450" style={{ border: '0' }} allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+              <iframe title="Google Maps Location" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2505.215687169981!2d-0.17097842374355887!3d51.10448057172448!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4875f1f18b942ac5%3A0xb248948c7587c4ee!2s11%20Sharon%20Cl%2C%20Crawley%20RH10%206QD!5e0!3m2!1sen!2suk!4v1704920189517!5m2!1sen!2suk" width="100%" height="450" style={{ border: '0' }} allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
               </div>
             </Col>
           </Row>
